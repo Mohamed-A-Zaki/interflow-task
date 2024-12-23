@@ -3,6 +3,17 @@ module.exports = {
   darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+    },
+    screens: {
+      sm: "576px",
+      md: "768px",
+      lg: "992px",
+      xl: "1200px",
+      "2xl": "1400px",
+    },
     extend: {
       borderRadius: {
         lg: "var(--radius)",
@@ -10,6 +21,11 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        yellow: "hsl(var(--yellow))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -19,10 +35,6 @@ module.exports = {
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
-        },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
