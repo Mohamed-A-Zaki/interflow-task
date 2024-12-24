@@ -1,3 +1,4 @@
+import { branchesAtom } from "@/atoms/branches-atom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -25,6 +26,8 @@ const FormSchema = z.object({
 });
 
 export default function AddBranchForm() {
+  const { branches } = branchesAtom.useValue();
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -34,7 +37,10 @@ export default function AddBranchForm() {
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data);
+    branchesAtom.createBranch({
+      id: branches.length + 1,
+      ...data,
+    });
   }
 
   return (

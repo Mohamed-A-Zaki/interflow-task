@@ -1,5 +1,5 @@
 import AddBranchButton from "@/components/AddBranchButton";
-import BranchesList from "@/components/BranchesList";
+import BranchesSection from "@/components/BranchesSection";
 import BreadcrumbSection from "@/components/BreadcrumbSection";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -15,7 +15,7 @@ export default function HomePage() {
           <main>
             <BreadcrumbSection />
             <AddBranchButton />
-            <BranchesList />
+            <BranchesSection />
           </main>
         </div>
       </div>
