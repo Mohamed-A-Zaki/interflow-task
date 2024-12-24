@@ -1,7 +1,9 @@
 import { branchesAtom } from "@/atoms/branches-atom";
+import { languageAtom } from "@/atoms/language-atom";
 import { selectedBranchIdAtom } from "@/atoms/selected-branch-id-atom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { z } from "zod";
 import { Button } from "../ui/button";
 import {
@@ -30,6 +32,8 @@ export default function EditBranchForm() {
   const { branches } = branchesAtom.useValue();
   const { selectedBranchId } = selectedBranchIdAtom.useValue();
   const branch = branches.find((branch) => branch.id === selectedBranchId);
+  const { currentLanguage } = languageAtom.useValue();
+  const { t } = useTranslation();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -55,16 +59,16 @@ export default function EditBranchForm() {
       <form
         onSubmit={form.handleSubmit(onEdit)}
         className="space-y-6"
-        dir="rtl"
+        dir={currentLanguage === "ar" ? "rtl" : "ltr"}
       >
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>الاسم *</FormLabel>
+              <FormLabel>{t("name")} *</FormLabel>
               <FormControl>
-                <Input placeholder="اضف اسم الفرع" {...field} />
+                <Input placeholder={t("addBranchName")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -76,15 +80,15 @@ export default function EditBranchForm() {
           name="country"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>الدولة *</FormLabel>
+              <FormLabel>{t("country")} *</FormLabel>
               <Select
                 onValueChange={field.onChange}
                 value={field.value}
-                dir="rtl"
+                dir={currentLanguage === "ar" ? "rtl" : "ltr"}
               >
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="اختر الدولة" />
+                    <SelectValue placeholder={t("chooseCountry")} />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -104,10 +108,10 @@ export default function EditBranchForm() {
             type="submit"
             className="bg-secondary/70 text-black hover:bg-secondary"
           >
-            حفظ
+            {t("save")}
           </Button>
           <Button type="button" variant={"destructive"} onClick={onDelete}>
-            حذف
+            {t("delete")}
           </Button>
         </div>
       </form>

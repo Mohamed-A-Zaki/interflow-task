@@ -1,5 +1,6 @@
 import { navLinks } from "@/data/nav-links";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 import { CiShare2 } from "react-icons/ci";
 import { FaRegChessQueen } from "react-icons/fa6";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
@@ -10,6 +11,8 @@ type SidebarProps = {
 };
 
 export default function Sidebar({ className }: SidebarProps) {
+  const { t } = useTranslation();
+
   return (
     <div
       className={cn(
@@ -63,7 +66,7 @@ export default function Sidebar({ className }: SidebarProps) {
                     >
                       <div className="flex items-center gap-3">
                         <Icon size={18} />
-                        {title}
+                        {t(title)}
                       </div>
                       {isNew && (
                         <div>

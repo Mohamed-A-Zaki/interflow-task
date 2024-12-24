@@ -1,4 +1,5 @@
 import { openEditBranchModalAtom } from "@/atoms/open-edit-branch-modal-atom";
+import { useTranslation } from "react-i18next";
 import EditBranchForm from "../forms/EditBranchForm";
 import {
   Dialog,
@@ -9,6 +10,8 @@ import {
 } from "../ui/dialog";
 
 export default function EditBranchModal() {
+  const { t } = useTranslation();
+
   return (
     <Dialog
       open={openEditBranchModalAtom.useOpened()}
@@ -16,7 +19,9 @@ export default function EditBranchModal() {
     >
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="text-center">تعديل بيانات الفرع</DialogTitle>
+          <DialogTitle className="text-center">
+            {t("editBranchData")}
+          </DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
 

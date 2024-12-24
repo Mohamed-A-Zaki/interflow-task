@@ -1,4 +1,5 @@
 import { openCreateBranchModalAtom } from "@/atoms/open-create-branch-modal-atom";
+import { useTranslation } from "react-i18next";
 import AddBranchForm from "../forms/AddBranchForm";
 import {
   Dialog,
@@ -9,6 +10,8 @@ import {
 } from "../ui/dialog";
 
 export default function AddBranchModal() {
+  const { t } = useTranslation();
+
   return (
     <Dialog
       open={openCreateBranchModalAtom.useOpened()}
@@ -16,7 +19,7 @@ export default function AddBranchModal() {
     >
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="text-center">اضافة فرع جديد</DialogTitle>
+          <DialogTitle className="text-center">{t("addNewBranch")}</DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
 

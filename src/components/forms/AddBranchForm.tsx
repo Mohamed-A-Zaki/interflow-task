@@ -1,6 +1,8 @@
 import { branchesAtom } from "@/atoms/branches-atom";
+import { languageAtom } from "@/atoms/language-atom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { z } from "zod";
 import { Button } from "../ui/button";
 import {
@@ -27,6 +29,8 @@ const FormSchema = z.object({
 
 export default function AddBranchForm() {
   const { branches } = branchesAtom.useValue();
+  const { currentLanguage } = languageAtom.useValue();
+  const { t } = useTranslation();
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -48,16 +52,16 @@ export default function AddBranchForm() {
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6"
-        dir="rtl"
+        dir={currentLanguage === "ar" ? "rtl" : "ltr"}
       >
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>الاسم *</FormLabel>
+              <FormLabel>{t("name")} *</FormLabel>
               <FormControl>
-                <Input placeholder="اضف اسم الفرع" {...field} />
+                <Input placeholder={t("addBranchName")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -69,15 +73,15 @@ export default function AddBranchForm() {
           name="country"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>الدولة *</FormLabel>
+              <FormLabel>{t("country")} *</FormLabel>
               <Select
                 onValueChange={field.onChange}
                 defaultValue={field.value}
-                dir="rtl"
+                dir={currentLanguage === "ar" ? "rtl" : "ltr"}
               >
                 <FormControl>
                   <SelectTrigger>
-                    <SelectValue placeholder="اختر الدولة" />
+                    <SelectValue placeholder={t("chooseCountry")} />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
@@ -96,7 +100,7 @@ export default function AddBranchForm() {
           type="submit"
           className="w-full bg-secondary/70 text-black hover:bg-secondary"
         >
-          حفظ
+          {t("save")}
         </Button>
       </form>
     </Form>
