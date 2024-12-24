@@ -16,7 +16,7 @@ export default function AddBranchModal() {
     >
       <DialogContent>
         <DialogHeader>
-          <DialogTitle></DialogTitle>
+          <DialogTitle className="text-center">اضافة فرع جديد</DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
 

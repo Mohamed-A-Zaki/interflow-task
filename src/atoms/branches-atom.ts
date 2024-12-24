@@ -1,7 +1,8 @@
 import { atom } from "@mongez/react-atom";
 import { openCreateBranchModalAtom } from "./open-create-branch-modal-atom";
+import { openEditBranchModalAtom } from "./open-edit-branch-modal-atom";
 
-type Branch = {
+export type Branch = {
   id: number;
   name: string;
   country: string;
@@ -19,7 +20,7 @@ type BranchesAtomActions = {
   /***
    * deleteBranch
    */
-  deleteBranch: (id: string) => void;
+  deleteBranch: (id: number) => void;
   /***
    * editBranch
    */
@@ -43,13 +44,12 @@ export const branchesAtom = atom<BranchesAtom, BranchesAtomActions>({
     /***
      * deleteBranch
      */
-    deleteBranch(id: string) {
+    deleteBranch(id: number) {
       branchesAtom.change(
         "branches",
-        branchesAtom.value.branches.filter(
-          (branch) => branch.id !== Number(id),
-        ),
+        branchesAtom.value.branches.filter((branch) => branch.id !== id),
       );
+      openEditBranchModalAtom.close();
     },
     /**
      * editBranch
@@ -61,6 +61,7 @@ export const branchesAtom = atom<BranchesAtom, BranchesAtomActions>({
           branch.id === data.id ? data : branch,
         ),
       );
+      openEditBranchModalAtom.close();
     },
   },
 });

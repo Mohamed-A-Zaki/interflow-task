@@ -14,8 +14,8 @@ export default function BranchesList() {
 
   return (
     <div className="p-5">
-      {branches.map((_, indx) => {
-        return <BranchItem key={indx} />;
+      {branches.map((branch, indx) => {
+        return <BranchItem key={indx} {...branch} />;
       })}
     </div>
   );
