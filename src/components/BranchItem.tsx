@@ -17,12 +17,12 @@ export default function BranchItem() {
           </Badge>
         </div>
         <div className="flex items-center gap-2 text-sm">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 text-gray-400">
             <FaStore />
             مستودع
           </div>
           -
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 font-semibold">
             <Checkbox className="rounded-full" />
             <span className="text-primary underline">الافتراضي</span>
           </div>

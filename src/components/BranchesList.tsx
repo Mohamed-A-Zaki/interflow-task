@@ -17,6 +17,7 @@ export default function BranchesList() {
           <Input
             className="rounded-none rounded-s-md focus-visible:ring-0"
             placeholder="عدد لا محدود"
+            readOnly
           />
           <Button className="rounded-none bg-secondary/70 text-primary hover:bg-secondary">
             <Infinity />
