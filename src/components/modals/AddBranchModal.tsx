@@ -1,4 +1,5 @@
 import { openCreateBranchModalAtom } from "@/atoms/open-create-branch-modal-atom";
+import AddBranchForm from "../forms/AddBranchForm";
 import {
   Dialog,
   DialogContent,
@@ -15,12 +16,11 @@ export default function AddBranchModal() {
     >
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
-          <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </DialogDescription>
+          <DialogTitle></DialogTitle>
+          <DialogDescription></DialogDescription>
         </DialogHeader>
+
+        <AddBranchForm />
       </DialogContent>
     </Dialog>
   );
