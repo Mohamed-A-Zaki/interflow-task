@@ -1,4 +1,5 @@
 import AddBranchModal from "./components/modals/AddBranchModal";
+import SidebarSheet from "./components/SidebarSheet";
 import HomePage from "./pages/HomePage";
 
 export default function App() {
@@ -8,6 +9,7 @@ export default function App() {
 
       {/* modals */}
       <AddBranchModal />
+      <SidebarSheet />
     </div>
   );
 }

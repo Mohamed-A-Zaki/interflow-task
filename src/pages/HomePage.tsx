@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <>
       <div className="flex">
-        <Sidebar />
+        <Sidebar className="hidden xl:block" />
         <div className="container">
           <Navbar />
           <main>

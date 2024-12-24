@@ -1,12 +1,22 @@
 import { navLinks } from "@/data/nav-links";
+import { cn } from "@/lib/utils";
 import { CiShare2 } from "react-icons/ci";
 import { FaRegChessQueen } from "react-icons/fa6";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { Badge } from "./ui/badge";
 
-export default function Sidebar() {
+type SidebarProps = {
+  className?: string;
+};
+
+export default function Sidebar({ className }: SidebarProps) {
   return (
-    <div className="min-h-screen w-[350px] bg-primary p-5 text-white">
+    <div
+      className={cn(
+        "min-h-screen w-[300px] shrink-0 bg-primary p-5 text-white",
+        className,
+      )}
+    >
       <img
         alt="logo"
         className="m-auto w-[90px]"

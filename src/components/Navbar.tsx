@@ -7,6 +7,7 @@ import {
   MdOutlineSettingsSuggest,
   MdUpdate,
 } from "react-icons/md";
+import SidebarToggler from "./SidebarToggler";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { Button } from "./ui/button";
 import {
@@ -29,7 +30,7 @@ import {
 export default function Navbar() {
   return (
     <nav className="my-3 flex items-center justify-between">
-      <div className="flex items-center overflow-hidden rounded-lg">
+      <div className="hidden items-center overflow-hidden rounded-lg xl:flex">
         <div className="relative">
           <Input
             placeholder="ابحث برقم الطلب ، اسم العميل ، رقم الشحنة"
@@ -59,6 +60,9 @@ export default function Navbar() {
           <Search />
         </Button>
       </div>
+
+      <SidebarToggler />
+
       <div className="flex items-center gap-2">
         <div className="cursor-pointer rounded-full border border-secondary p-[10px] text-primary">
           <FaGift size={18} />
