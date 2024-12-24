@@ -1,6 +1,21 @@
-import { Search } from "lucide-react";
+import { AlertCircle, LogOut, Search, User } from "lucide-react";
+import { FaGift } from "react-icons/fa";
 import { IoAlertCircleOutline } from "react-icons/io5";
+import {
+  MdKeyboardArrowDown,
+  MdOutlineLanguage,
+  MdOutlineSettingsSuggest,
+  MdUpdate,
+} from "react-icons/md";
+import { Avatar, AvatarFallback } from "./ui/avatar";
 import { Button } from "./ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import { Input } from "./ui/input";
 import {
@@ -44,7 +59,48 @@ export default function Navbar() {
           <Search />
         </Button>
       </div>
-      <div>{/* TODO: Add notifications */}</div>
+      <div className="flex items-center gap-2">
+        <div className="cursor-pointer rounded-full border border-secondary p-[10px] text-primary">
+          <FaGift size={18} />
+        </div>
+        <div className="cursor-pointer rounded-full border border-secondary p-[10px] text-primary">
+          <MdOutlineLanguage size={18} />
+        </div>
+        <DropdownMenu dir="rtl">
+          <DropdownMenuTrigger className="flex items-center gap-1 text-sm text-gray-500">
+            <Avatar>
+              <AvatarFallback>
+                <User />
+              </AvatarFallback>
+            </Avatar>
+            <div>متجر الهدايا</div>
+            <MdKeyboardArrowDown />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem className="cursor-pointer">
+              <User />
+              الملف الشخصي
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              <AlertCircle />
+              التنبيهات
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              <MdUpdate />
+              تحديثات المنصة
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              <MdOutlineSettingsSuggest />
+              الاقتراحات
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="cursor-pointer !text-red-500">
+              <LogOut />
+              تسجيل الخروج
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
     </nav>
   );
 }
