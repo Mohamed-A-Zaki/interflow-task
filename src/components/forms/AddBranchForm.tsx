@@ -1,9 +1,4 @@
-import { branchesAtom } from "@/atoms/branches-atom";
-import { languageAtom } from "@/atoms/language-atom";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { useTranslation } from "react-i18next";
-import { z } from "zod";
+import useAddBranchForm from "@/hooks/use-add-branch-form";
 import { Button } from "../ui/button";
 import {
   Form,
@@ -22,30 +17,8 @@ import {
   SelectValue,
 } from "../ui/select";
 
-const FormSchema = z.object({
-  name: z.string().nonempty({ message: "ادخل اسم الفرع" }),
-  country: z.string().nonempty({ message: "ادخل الدولة" }),
-});
-
 export default function AddBranchForm() {
-  const { branches } = branchesAtom.useValue();
-  const { currentLanguage } = languageAtom.useValue();
-  const { t } = useTranslation();
-
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      name: "",
-      country: "",
-    },
-  });
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    branchesAtom.createBranch({
-      id: branches.length + 1,
-      ...data,
-    });
-  }
+  const { currentLanguage, form, onSubmit, t } = useAddBranchForm();
 
   return (
     <Form {...form}>
