@@ -18,6 +18,7 @@ import {
 } from "../ui/select";
 
 export default function AddBranchForm() {
+  // Compare this snippet from src/components/forms/AddBranchForm.tsx:
   const { currentLanguage, form, onSubmit, t } = useAddBranchForm();
 
   return (
